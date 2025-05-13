@@ -38,5 +38,10 @@ class RegisterPage:
         )
         assert "As senhas precisam ser iguais" in message_error.text, "Mensagem de erro não encontrada ou incorreta"   
 
+    def verify_error_message_invalid_format_email(self):
+        message_error = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//p[text()='Digite um e-mail válido']"))
+        )
+        assert "Digite um e-mail válido" in message_error.text, "Mensagem de erro não encontrada ou incorreta"   
 
   

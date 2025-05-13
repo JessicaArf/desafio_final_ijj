@@ -27,3 +27,9 @@ Feature: Cadastro de usuário
     And ele clica no botão de Criar conta
     Then uma mensagem de erro contendo 'As senhas precisam ser iguais' deve ser exibida
    
+   Scenario: E-mail sem o "@" no formato
+    Given que o usuário não possui conta e está na página de login
+    When ele clica no 'Clique aqui e registre-se'
+    When ele preenche o e-mail inválido sem o '@'
+    And ele clica no botão de Criar conta
+    Then uma mensagem de erro contendo 'Digite um e-mail válido' deve ser exibida

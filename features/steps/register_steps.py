@@ -15,7 +15,12 @@ def step_impl(context):
 
 @when("ele preenche o e-mail")
 def step_impl(context):
-    context.register_page.fill_email("testejessica17@email.com")
+    context.register_page.fill_email("testejessica19@email.com")
+
+@when("ele preenche o e-mail inválido sem o '@'")
+def step_impl(context):
+    invalid_email = "testejessica17email.com"  
+    context.register_page.fill_email(invalid_email)  
 
 @when("ele preenche a senha")
 def step_impl(context):
@@ -47,4 +52,9 @@ def step_impl(context):
 @then("uma mensagem de erro contendo 'As senhas precisam ser iguais' deve ser exibida")
 def step_impl(context):
     context.register_page.verify_error_message_password()
-    context.driver.quit()    
+    context.driver.quit()  
+
+@then("uma mensagem de erro contendo 'Digite um e-mail válido' deve ser exibida")
+def step_impl(context):
+    context.register_page.verify_error_message_invalid_format_email()
+    context.driver.quit()        
