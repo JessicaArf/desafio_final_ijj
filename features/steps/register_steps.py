@@ -2,6 +2,11 @@ from behave import given, when, then
 from selenium import webdriver
 from pages.register_page import RegisterPage
 import time
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 @given("que o usuário não possui conta e está na página de login")
 def step_impl(context):
@@ -15,22 +20,21 @@ def step_impl(context):
 def step_impl(context):
     context.register_page.fill_email("testejessica19@email.com")
 
-@when("ele preenche o e-mail inválido sem o '@'")
+@when("ele preenche o e-mail sem @")
 def step_impl(context):
-    invalid_email = "testejessica17email.com"  
-    context.register_page.fill_email(invalid_email)  
+    context.register_page.fill_email(os.getenv("INVALID_EMAIL_REGISTER"))  
 
 @when("ele preenche a senha")
 def step_impl(context):
-    context.register_page.fill_password("123456")
+    context.register_page.fill_password(os.getenv("CONFIRM_PASSWORD_REGISTER"))
 
 @when("ele preenche o confirmar senha")    
 def step_impl(context):
-    context.register_page.fill_confirm_password("123456")
+    context.register_page.fill_confirm_password(os.getenv("CONFIRM_PASSWORD_REGISTER"))
     
-@when("ele preenche o confirmar senha diferente")    
+@when("ele preenche o confirmar senha com uma senha diferente")    
 def step_impl(context):
-    context.register_page.fill_confirm_password("senhadiferente") 
+    context.register_page.fill_confirm_password(os.getenv("WRONG_CONFIRM_PASSWORD_REGISTER")) 
 
 @when("ele clica no botão de Criar conta")    
 def step_impl(context):

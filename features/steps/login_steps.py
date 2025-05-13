@@ -2,21 +2,31 @@ from behave import given, when, then
 from selenium import webdriver
 from pages.login_page import LoginPage
 import time
+import os
+from dotenv import load_dotenv
 
+
+load_dotenv()
 
 @given("que o usuário está na página de login")
 def step_impl(context):
     context.login_page = LoginPage(context.driver)
 
-@when("ele preenche o e-mail e a senha válidos")
+@when("ele preenche o campo e-mail")
 def step_impl(context):
-    context.login_page.fill_email("jessica@email.com")
-    context.login_page.fill_password("123456")
+    context.login_page.fill_email(os.getenv("VALID_EMAIL_LOGIN"))
 
-@when("ele preenche e-mail e senha inválidos")
+@when("ele preenche o campo senha")
+def step_impl(context):    
+    context.login_page.fill_password(os.getenv("VALID_PASSWORD_LOGIN"))
+
+@when("ele preenche o e-mail inválido")
 def step_impl(context):
-    context.login_page.fill_email("errado@teste.com")
-    context.login_page.fill_password("errada")
+    context.login_page.fill_email(os.getenv("INVALID_EMAIL_LOGIN"))
+
+@when("ele preenche a senha inválida")
+def step_impl(context):
+    context.login_page.fill_password(os.getenv("INVALID_PASSWORD_LOGIN"))
 
 @when("clica no botão de Iniciar sessão")
 def step_impl(context):
