@@ -26,9 +26,17 @@ class RegisterPage:
         message_success = self.driver.find_element(By.CSS_SELECTOR, ".sucess")
         assert "Usuário cadastrado com sucesso" in message_success.text, "Mensagem de sucesso não encontrada ou incorreta"
 
-    def verify_error_message(self):
+    def verify_error_message_email(self):
         message_error = WebDriverWait(self.driver, 10).until(
         EC.presence_of_element_located((By.XPATH, "//span[text()='Usuario ja existente com email informado']"))
         )
         assert "Usuario ja existente com email informado" in message_error.text, "Mensagem de erro não encontrada ou incorreta"
-        
+
+    def verify_error_message_password(self):
+        message_error = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//span[text()='As senhas precisam ser iguais']"))
+        )
+        assert "As senhas precisam ser iguais" in message_error.text, "Mensagem de erro não encontrada ou incorreta"   
+
+
+  

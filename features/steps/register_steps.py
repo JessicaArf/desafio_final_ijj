@@ -15,7 +15,7 @@ def step_impl(context):
 
 @when("ele preenche o e-mail")
 def step_impl(context):
-    context.register_page.fill_email("testejessica16@email.com")
+    context.register_page.fill_email("testejessica17@email.com")
 
 @when("ele preenche a senha")
 def step_impl(context):
@@ -24,6 +24,10 @@ def step_impl(context):
 @when("ele preenche o confirmar senha")    
 def step_impl(context):
     context.register_page.fill_confirm_password("123456")
+    
+@when("ele preenche o confirmar senha diferente")    
+def step_impl(context):
+    context.register_page.fill_confirm_password("senhadiferente") 
 
 @when("ele clica no botão de Criar conta")    
 def step_impl(context):
@@ -37,5 +41,10 @@ def step_impl(context):
     
 @then("uma mensagem de erro contendo 'Usuario ja existente com email informado' deve ser exibida")
 def step_impl(context):
-    context.register_page.verify_error_message()
+    context.register_page.verify_error_message_email()
     context.driver.quit()
+
+@then("uma mensagem de erro contendo 'As senhas precisam ser iguais' deve ser exibida")
+def step_impl(context):
+    context.register_page.verify_error_message_password()
+    context.driver.quit()    
