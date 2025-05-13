@@ -9,7 +9,7 @@ Feature: Cadastro de usuário
     And ele clica no botão de Criar conta
     Then uma mensagem de sucesso contendo 'Usuário cadastrado com sucesso' deve ser exibida
 
-   Scenario: E-mail já cadastrado
+   Scenario: Cadastro de usuário com e-mail já cadastrado
     Given que o usuário não possui conta e está na página de login
     When ele clica no 'Clique aqui e registre-se'
     And ele preenche o e-mail 
@@ -18,7 +18,7 @@ Feature: Cadastro de usuário
     And ele clica no botão de Criar conta
     Then uma mensagem de erro contendo 'Usuario ja existente com email informado' deve ser exibida
    
-   Scenario: Senhas não coincidem
+   Scenario: Cadastro de usuário com senhas que não coincidem
     Given que o usuário não possui conta e está na página de login
     When ele clica no 'Clique aqui e registre-se'
     And ele preenche o e-mail 
@@ -27,7 +27,7 @@ Feature: Cadastro de usuário
     And ele clica no botão de Criar conta
     Then uma mensagem de erro contendo 'As senhas precisam ser iguais' deve ser exibida
    
-   Scenario: E-mail sem o "@" no formato
+   Scenario: Cadastro de usuário com e-mail sem o "@" no formato
     Given que o usuário não possui conta e está na página de login
     When ele clica no 'Clique aqui e registre-se'
     When ele preenche o e-mail inválido sem o '@'

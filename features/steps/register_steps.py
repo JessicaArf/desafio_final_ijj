@@ -5,8 +5,6 @@ import time
 
 @given("que o usuário não possui conta e está na página de login")
 def step_impl(context):
-    context.driver = webdriver.Chrome()
-    context.driver.get("https://projetofinal.jogajuntoinstituto.org/")
     context.register_page = RegisterPage(context.driver)
 
 @when("ele clica no 'Clique aqui e registre-se'")
@@ -42,19 +40,17 @@ def step_impl(context):
 def step_impl(context):
     time.sleep(2)
     context.register_page.verify_message_success()
-    context.driver.quit()
+
     
 @then("uma mensagem de erro contendo 'Usuario ja existente com email informado' deve ser exibida")
 def step_impl(context):
     context.register_page.verify_error_message_email()
-    context.driver.quit()
-
+  
 @then("uma mensagem de erro contendo 'As senhas precisam ser iguais' deve ser exibida")
 def step_impl(context):
     context.register_page.verify_error_message_password()
-    context.driver.quit()  
 
 @then("uma mensagem de erro contendo 'Digite um e-mail válido' deve ser exibida")
 def step_impl(context):
     context.register_page.verify_error_message_invalid_format_email()
-    context.driver.quit()        
+     

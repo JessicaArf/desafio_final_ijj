@@ -6,8 +6,6 @@ import time
 
 @given("que o usuário está na página de login")
 def step_impl(context):
-    context.driver = webdriver.Chrome()
-    context.driver.get("https://projetofinal.jogajuntoinstituto.org/")
     context.login_page = LoginPage(context.driver)
 
 @when("ele preenche o e-mail e a senha válidos")
