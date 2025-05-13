@@ -15,7 +15,7 @@ def step_impl(context):
 
 @when("ele preenche o e-mail")
 def step_impl(context):
-    context.register_page.fill_email("testejessica12@email.com")
+    context.register_page.fill_email("testejessica16@email.com")
 
 @when("ele preenche a senha")
 def step_impl(context):
@@ -33,4 +33,9 @@ def step_impl(context):
 def step_impl(context):
     time.sleep(2)
     context.register_page.verify_message_success()
+    context.driver.quit()
+    
+@then("uma mensagem de erro contendo 'Usuario ja existente com email informado' deve ser exibida")
+def step_impl(context):
+    context.register_page.verify_error_message()
     context.driver.quit()
