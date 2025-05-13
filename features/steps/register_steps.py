@@ -5,7 +5,6 @@ import time
 import os
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 @given("que o usuário não possui conta e está na página de login")
@@ -18,7 +17,7 @@ def step_impl(context):
 
 @when("ele preenche o e-mail")
 def step_impl(context):
-    context.register_page.fill_email("testejessica19@email.com")
+    context.register_page.fill_email(os.getenv("VALID_EMAIL_REGISTER"))
 
 @when("ele preenche o e-mail sem @")
 def step_impl(context):
