@@ -1,6 +1,6 @@
 from behave import given, when, then
 from selenium import webdriver
-from pages.register_page import RegisterPage
+from pages.register_user_page import RegisterPage
 import time
 import os
 from dotenv import load_dotenv
