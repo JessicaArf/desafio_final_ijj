@@ -3,6 +3,7 @@ from faker import Faker
 from dotenv import load_dotenv
 import requests
 import os
+from utils.logger_config import logger
 
 load_dotenv()
 
@@ -50,10 +51,10 @@ def after_all(context):
                 response_delete_products = requests.delete(url_delete, headers=headers)
 
                 if response_delete_products.status_code == 200:
-                    print(f"Produto {product_id} deletado com sucesso.")
+                    logger.info(f"Produto {product_id} deletado com sucesso.")
                 else:
-                    print(f"Erro ao deletar o produto {product_id}: {response_delete_products.text}")
+                    logger.error(f"Erro ao deletar o produto {product_id}: {response_delete_products.text}")
         else:
-            print("Erro ao buscar produtos:", response_get_products.text)
+            logger.error("Erro ao buscar produtos: %s", response_get_products.text)
     else:
-        print("Erro ao fazer login:", login_response.text)
+       logger.error("Erro ao fazer login: %s", login_response.text)
