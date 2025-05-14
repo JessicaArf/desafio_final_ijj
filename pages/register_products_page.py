@@ -43,5 +43,13 @@ class RegisterProductsPage:
         )
         assert "Produto enviado com sucesso" in message_success.text, "Mensagem de sucesso não encontrada ou incorreta"
     
+    def verify_error_message(self, expected_message):
+        message = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, f"//p[contains(text(), '{expected_message}')]"))
+        )
+        assert expected_message in message.text, f"Mensagem esperada: '{expected_message}' não foi exibida."
 
+
+
+    
 

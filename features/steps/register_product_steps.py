@@ -51,3 +51,18 @@ def step_impl(context):
 def step_impl(context):
     context.register_products_page.verify_message_success()
 
+@then("deve exibir a mensagem 'Preencha o campo Nome'")
+def step_impl(context):
+    context.register_products_page.verify_error_message("Preencha o campo Nome")
+
+@then("deve exibir a mensagem 'Descrição do produto necessaria.'")
+def step_impl(context):
+    context.register_products_page.verify_error_message("Descrição do produto necessaria")    
+
+@then("deve exibir a mensagem 'Image is required'")
+def step_impl(context):
+    context.register_products_page.verify_error_message("Image is required")    
+
+@then("deve exibir a mensagem 'Defina o valor do frete'")
+def step_impl(context):
+    context.register_products_page.verify_error_message("Defina o valor do frete")    
