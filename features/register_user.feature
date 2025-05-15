@@ -1,6 +1,6 @@
 Feature: Cadastro de usuário
 
-  Scenario: Cadastro de usuário com dados válidos
+  Scenario: Cadastro de usuário com dados váão eulidos
     Given que o usuário não possui conta e está na página de login
     When ele clica no 'Clique aqui e registre-se'
     And ele preenche o e-mail
